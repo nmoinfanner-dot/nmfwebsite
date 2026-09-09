@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eeeeee;
+  --foreground: #2e2e2e;
+  --accent: #90bf79;
+  --button-background: #ffffff;
+  --font-cal-sans: "Cal Sans", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-button-background: var(--button-background);
+  --font-sans: var(--font-outfit);
+  --font-heading: var(--font-cal-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.animate-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.5s ease-in-out infinite;
+}
+
+/* Site-wide motion safety net: shrink every CSS transition/animation to
+   near-instant when the user has reduced motion enabled at the OS level.
+   Framer Motion animations are handled separately via MotionConfig. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
