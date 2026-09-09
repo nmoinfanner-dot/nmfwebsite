@@ -12,7 +12,7 @@ export function ContactCta() {
           Start a project
         </a>
         <a
-          href="mailto:nmoinfanner@gmai.com"
+          href="mailto:nmoinfanner@gmail.com"
           className="rounded-[10px] bg-accent px-5 py-3 font-sans font-bold text-foreground transition-opacity duration-300 ease-out hover:opacity-80"
         >
           Get in touch

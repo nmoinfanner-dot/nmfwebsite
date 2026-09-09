@@ -14,7 +14,7 @@ export function SiteFooter() {
           <WhatsAppIcon className="h-5 w-5" />
         </a>
         <a
-          href="mailto:nmoinfanner@gmai.com"
+          href="mailto:nmoinfanner@gmail.com"
           aria-label="Email"
           className="text-foreground transition-opacity duration-300 ease-out hover:opacity-70"
         >
