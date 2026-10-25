@@ -13,6 +13,9 @@ import cartelImage from "@/assets/images/project/cresta/cartel.png";
 import branding1Image from "@/assets/images/project/cresta/branding1.jpg";
 import tarjetaImage from "@/assets/images/project/cresta/tarjeta.png";
 import propuestaImage from "@/assets/images/project/cresta/propuesta.png";
+import menuGiorno1Image from "@/assets/images/project/cresta/menu-giorno1.png";
+import menuGiorno2Image from "@/assets/images/project/cresta/menu-giorno2.png";
+import menuGiorno3Image from "@/assets/images/project/cresta/menu-giorno3.png";
 
 export const cresta: ProjectDetail = {
   slug: "cresta",
@@ -92,6 +95,15 @@ export const cresta: ProjectDetail = {
         { src: branding1Image, alt: "Cresta branding" },
         { src: tarjetaImage, alt: "Cresta card" },
         { src: propuestaImage, alt: "Cresta proposal" },
+      ],
+    },
+    {
+      type: "gallery",
+      columns: 3,
+      images: [
+        { src: menuGiorno1Image, alt: "Cresta menu, Giorno 1: Benvenuto", fit: "contain" },
+        { src: menuGiorno2Image, alt: "Cresta menu, Giorno 2: Montagna", fit: "contain" },
+        { src: menuGiorno3Image, alt: "Cresta menu, Giorno 3: Arrivederci", fit: "contain" },
       ],
     },
     {
