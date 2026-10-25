@@ -63,14 +63,16 @@ export function GalleryBlockView({ block }: { block: GalleryBlock }) {
           }
 
           const image = item;
+          const isContain = image.fit === "contain";
           return (
             <div key={`${image.alt}-${index}`} className="flex flex-col gap-3">
               {image.src ? (
                 <ZoomableImage
                   src={image.src}
                   alt={image.alt}
-                  wrapperClassName={`${boxAspect} rounded-2xl`}
+                  wrapperClassName={isContain ? "rounded-2xl" : `${boxAspect} rounded-2xl`}
                   sizes={sizesByColumns[block.columns]}
+                  fit={image.fit}
                 />
               ) : (
                 <div className={`${boxAspect} rounded-2xl bg-accent/20`} />

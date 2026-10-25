@@ -8,11 +8,17 @@ export function ZoomableImage({
   alt,
   wrapperClassName = "",
   sizes = "100vw",
+  fit = "cover",
 }: {
   src: StaticImageData;
   alt: string;
   wrapperClassName?: string;
   sizes?: string;
+  // "cover" (default) fills a fixed-aspect box, cropping as needed.
+  // "contain" renders the image at its natural aspect ratio instead, so
+  // nothing gets cropped (wrapperClassName shouldn't include an aspect
+  // class in that case).
+  fit?: "cover" | "contain";
 }) {
   const [open, setOpen] = useState(false);
 
@@ -31,15 +37,24 @@ export function ZoomableImage({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`Expand ${alt}`}
-        className={`relative block w-full cursor-zoom-in overflow-hidden ${wrapperClassName}`}
+        className={`block w-full cursor-zoom-in overflow-hidden ${fit === "cover" ? "relative" : ""} ${wrapperClassName}`}
       >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes={sizes}
-          className="object-cover transition duration-300 hover:scale-105"
-        />
+        {fit === "cover" ? (
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes={sizes}
+            className="object-cover transition duration-300 hover:scale-105"
+          />
+        ) : (
+          <Image
+            src={src}
+            alt={alt}
+            sizes={sizes}
+            className="h-auto w-full object-contain transition duration-300 hover:scale-105"
+          />
+        )}
       </button>
 
       {open && (

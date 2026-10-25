@@ -81,13 +81,15 @@ export type MosaicTile = MosaicImageTile | MosaicVideoTile;
 
 // heading + optional intro paragraph + mosaic grid (e.g. a "Social Media
 // Post" showcase), 6 tiles by convention. aspect: "portrait" (default) or
-// "square". Tiles can mix images and videos.
+// "square". Tiles can mix images and videos. Optional CTA button below the
+// grid (e.g. "Follow on Instagram").
 export type MosaicBlock = {
   type: "mosaic";
   heading: string;
   intro?: string;
   aspect?: "portrait" | "square";
   items: MosaicTile[];
+  cta?: { label: string; href: string };
 };
 
 // The technical fact sheet, usually paired with an intro paragraph next to

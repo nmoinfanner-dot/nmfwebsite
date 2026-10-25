@@ -1,5 +1,6 @@
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { ZoomableVideo } from "@/components/ZoomableVideo";
+import { darkButtonClasses } from "@/components/buttons";
 import type { MosaicBlock } from "@/lib/projectBlocks";
 
 const aspectClass: Record<NonNullable<MosaicBlock["aspect"]>, string> = {
@@ -39,6 +40,16 @@ export function MosaicBlockView({ block }: { block: MosaicBlock }) {
           );
         })}
       </div>
+      {block.cta && (
+        <a
+          href={block.cta.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${darkButtonClasses} mt-6`}
+        >
+          {block.cta.label}
+        </a>
+      )}
     </div>
   );
 }

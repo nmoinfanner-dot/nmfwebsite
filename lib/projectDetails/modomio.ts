@@ -6,6 +6,9 @@ import graphic01 from "@/assets/images/project/modo/modo-graphic-01.jpg";
 import graphic02 from "@/assets/images/project/modo/modo-graphic-02.jpg";
 import graphic03 from "@/assets/images/project/modo/modo-graphic-03.jpg";
 import graphic04 from "@/assets/images/project/modo/modo-graphic-04.jpg";
+import soldOutImage from "@/assets/images/project/modo/sold-out.webp";
+import tortaImage from "@/assets/images/project/modo/torta.webp";
+import sushiNightImage from "@/assets/images/project/modo/sushi-night.webp";
 
 export const modomio: ProjectDetail = {
   slug: "modomio",
@@ -55,7 +58,9 @@ export const modomio: ProjectDetail = {
       type: "gallery",
       columns: 1,
       aspect: "landscape",
-      images: [{ src: socialModoImage, alt: "ModoMio social media, wide format" }],
+      images: [
+        { src: socialModoImage, alt: "ModoMio social media, wide format", fit: "contain" },
+      ],
     },
     {
       type: "mosaic",
@@ -67,7 +72,11 @@ export const modomio: ProjectDetail = {
         { kind: "image", src: graphic02, alt: "ModoMio social media graphic 3" },
         { kind: "video", src: "/videos/modo/video-02.mp4", alt: "ModoMio social media video 2" },
         { kind: "image", src: graphic01, alt: "ModoMio social media graphic 4" },
+        { kind: "image", src: soldOutImage, alt: "ModoMio Edizione #02 sold out announcement" },
+        { kind: "image", src: tortaImage, alt: "ModoMio crostata" },
+        { kind: "image", src: sushiNightImage, alt: "ModoMio Sushi Night Plant-Based event" },
       ],
+      cta: { label: "Follow on Instagram", href: "https://www.instagram.com/amodomio.vegan" },
     },
     {
       type: "video",
