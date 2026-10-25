@@ -47,7 +47,7 @@ function CardArrowLink({ href, label }: { href: string; label: string }) {
 
 export default function Home() {
   return (
-    <section className="relative flex flex-col overflow-hidden px-6 py-6 sm:px-10 lg:h-screen lg:justify-between lg:px-[100px] lg:py-6">
+    <section className="relative flex flex-col overflow-x-hidden px-6 py-6 sm:px-10 lg:min-h-screen lg:justify-between lg:px-[100px] lg:py-6">
       {/* Giant semi-transparent watermark behind the bento cards */}
       <div
         aria-hidden="true"
