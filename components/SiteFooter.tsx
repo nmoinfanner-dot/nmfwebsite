@@ -20,7 +20,13 @@ export function SiteFooter() {
         >
           <EmailIcon className="h-5 w-5" />
         </a>
-        <a href="#" aria-label="LinkedIn" className="text-foreground transition-opacity duration-300 ease-out hover:opacity-70">
+        <a
+          href="https://www.linkedin.com/in/natalia-moin-fanner-142982147"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="text-foreground transition-opacity duration-300 ease-out hover:opacity-70"
+        >
           <LinkedInIcon className="h-5 w-5" />
         </a>
       </div>
