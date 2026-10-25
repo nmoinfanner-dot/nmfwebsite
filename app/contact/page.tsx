@@ -27,8 +27,8 @@ export default function ContactPage() {
             <div>
               <h2 className="font-sans font-bold text-foreground">Business Inquiries:</h2>
               <div className="mt-3 flex flex-col gap-1 font-sans text-foreground/70">
-                <a href="mailto:nmoinfanner@gmail.com" className="hover:underline">
-                  nmoinfanner@gmail.com
+                <a href="mailto:hello@nmoinfanner.com" className="hover:underline">
+                  hello@nmoinfanner.com
                 </a>
                 <a
                   href="https://wa.me/393384863698"

@@ -190,10 +190,10 @@ export default function Home() {
             </h2>
             <div className="relative flex flex-col gap-1 font-sans text-sm font-bold text-button-background">
               <a
-                href="mailto:nmoinfanner@gmail.com"
+                href="mailto:hello@nmoinfanner.com"
                 className="underline decoration-transparent underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current"
               >
-                nmoinfanner@gmail.com
+                hello@nmoinfanner.com
               </a>
               <a
                 href="https://wa.me/393384863698"
