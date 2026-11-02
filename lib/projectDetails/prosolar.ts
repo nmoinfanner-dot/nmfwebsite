@@ -16,6 +16,11 @@ export const prosolar: ProjectDetail = {
   title: "Prosolar",
   subtitle: "5 years of brand work that now feeds lead-gen campaigns generating 5,500+ leads.",
   coverImage,
+  seo: {
+    title: "Prosolar Case Study",
+    description:
+      "Five years of brand work for Prosolar Systems: a unified identity, social media and web design for a solar company across the US and Caribbean, led by Natalia.",
+  },
   nextProjectSlugs: ["modomio", "motion"],
   blocks: [
     {

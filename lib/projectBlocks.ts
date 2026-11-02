@@ -172,6 +172,9 @@ export type ProjectDetail = {
   title: string;
   subtitle: string;
   coverImage: StaticImageData;
+  // Search/share metadata for this page. title is just the page part (the
+  // site suffix is added by buildMetadata); description is 140-160 chars.
+  seo: { title: string; description: string };
   // When set, the detail page's hero plays this YouTube video instead of
   // coverImage. coverImage is still used for the /projects listing card and
   // "Next Project" thumbnails, which can't embed a live player.

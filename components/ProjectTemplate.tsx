@@ -71,7 +71,7 @@ export function ProjectTemplate({ project }: { project: ProjectDetail }) {
                   {next.image && (
                     <Image
                       src={next.image}
-                      alt=""
+                      alt={`${next.title} project cover`}
                       fill
                       sizes="(min-width: 1024px) 32rem, 100vw"
                       className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"

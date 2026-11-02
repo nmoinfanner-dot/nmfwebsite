@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactCta } from "@/components/ContactCta";
-import { blogPosts } from "@/lib/blog";
+import { blogMetaDescription, blogPosts, getPostDescription } from "@/lib/blog";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -17,7 +18,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
-  return { title: post ? post.title : "Blog" };
+  if (!post) return buildMetadata({ title: "Blog", description: blogMetaDescription, path: "/blog" });
+  return buildMetadata({
+    title: post.title,
+    description: getPostDescription(post),
+    path: `/blog/${post.slug}`,
+    image: post.coverImage
+      ? {
+          url: post.coverImage.src,
+          width: post.coverImage.width,
+          height: post.coverImage.height,
+          alt: post.title,
+        }
+      : undefined,
+    article: { publishedTime: post.date, section: post.category },
+  });
 }
 
 export default async function BlogPostPage({

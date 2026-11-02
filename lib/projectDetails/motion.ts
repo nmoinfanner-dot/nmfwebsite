@@ -9,6 +9,11 @@ export const motion: ProjectDetail = {
   title: "Motion & Creative Skills",
   subtitle: "Beyond static design: video, animation, illustration, and 3D as tools for communication.",
   coverImage,
+  seo: {
+    title: "Motion Design Portfolio",
+    description:
+      "Motion design, video, animation, illustration and 3D by Natalia Moin Fanner, from agency campaigns at Blue Edge to independent projects, made in After Effects.",
+  },
   coverVideoUrl: "https://youtu.be/3hMgEgovn9w",
   nextProjectSlugs: ["cresta", "prosolar"],
   blocks: [

@@ -7,6 +7,7 @@ import { ProjectTemplate } from "@/components/ProjectTemplate";
 import { linkClasses } from "@/components/buttons";
 import { projects } from "@/lib/projects";
 import { projectDetails } from "@/lib/projectDetails";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -19,9 +20,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const detail = projectDetails[slug];
-  if (detail) return { title: detail.title };
+  if (detail) {
+    return buildMetadata({
+      title: detail.seo.title,
+      description: detail.seo.description,
+      path: `/projects/${slug}`,
+      image: {
+        url: detail.coverImage.src,
+        width: detail.coverImage.width,
+        height: detail.coverImage.height,
+        alt: `${detail.title} project cover`,
+      },
+    });
+  }
   const project = projects.find((p) => p.slug === slug);
-  return { title: project?.title ?? "Project" };
+  return buildMetadata({
+    title: project?.title ?? "Project",
+    description: project?.oneLiner ?? "A project by Natalia Moin Fanner.",
+    path: `/projects/${slug}`,
+  });
 }
 
 export default async function ProjectPage({

@@ -3,11 +3,14 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactCta } from "@/components/ContactCta";
 import { Reveal } from "@/components/Reveal";
-import { blogCategories } from "@/lib/blog";
+import { blogCategories, blogMetaDescription } from "@/lib/blog";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Blog",
-};
+  description: blogMetaDescription,
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

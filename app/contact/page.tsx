@@ -3,10 +3,14 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Contact",
-};
+  description:
+    "Get in touch with Natalia Moin Fanner for brand identity, web design or motion projects. Based in Milan, working remotely with clients in Europe and the US.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

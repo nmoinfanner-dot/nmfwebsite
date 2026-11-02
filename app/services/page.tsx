@@ -4,14 +4,18 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactCta } from "@/components/ContactCta";
 import { Reveal } from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 import { toYoutubeEmbedUrl } from "@/lib/youtube";
 import serviceCrestaImage from "@/assets/images/project/cresta/service-cresta.png";
 import lugarImage from "@/assets/images/project/cresta/lugar.png";
 import imagen1Image from "@/assets/images/project/live/imagen1.jpg";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Services",
-};
+  description:
+    "Brand identity, graphic design, web design and motion design by Natalia Moin Fanner. Visual systems that stay consistent across every touchpoint, end to end.",
+  path: "/services",
+});
 
 const services = [
   {
@@ -25,7 +29,11 @@ const services = [
       "Color, typography, and usage guidelines",
       "Brand applications across web, social, print, and merchandise",
     ],
-    media: { type: "image" as const, src: serviceCrestaImage, alt: "Brand Identity" },
+    media: {
+      type: "image" as const,
+      src: serviceCrestaImage,
+      alt: "Black Cresta water bottle next to worn hiking boots on a mountain trail, part of a brand identity",
+    },
   },
   {
     number: "02",
@@ -38,7 +46,11 @@ const services = [
       "Campaign creative",
       "Presentation and pitch deck design",
     ],
-    media: { type: "image" as const, src: lugarImage, alt: "Graphic Design" },
+    media: {
+      type: "image" as const,
+      src: lugarImage,
+      alt: "Cresta brand applications: logo apron, framed welcome card, menu folder and chalkboard sign",
+    },
   },
   {
     number: "03",
@@ -51,7 +63,11 @@ const services = [
       "Interactive prototypes",
       "Framer or Next.js implementation",
     ],
-    media: { type: "image" as const, src: imagen1Image, alt: "Web Design" },
+    media: {
+      type: "image" as const,
+      src: imagen1Image,
+      alt: "Live Oak Veterinary website designed by Natalia Moin Fanner, shown on a laptop screen",
+    },
   },
   {
     number: "04",

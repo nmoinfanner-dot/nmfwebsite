@@ -4,11 +4,15 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactCta } from "@/components/ContactCta";
 import { Reveal } from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 import fotoNati from "@/assets/foto-nati.png";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About",
-};
+  description:
+    "Meet Natalia Moin Fanner, a senior designer with 8+ years of experience in brand identity, web design and motion, working with agencies, founders and brands.",
+  path: "/about",
+});
 
 const leftStats = [
   { value: "8+", label: "Years of Experience" },
@@ -127,7 +131,7 @@ export default function AboutPage() {
         <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-3xl">
           <Image
             src={fotoNati}
-            alt="Natalia Moin Fanner"
+            alt="Portrait of Natalia Moin Fanner, senior brand and web designer"
             fill
             sizes="(min-width: 1024px) 24rem, 100vw"
             className="object-cover"

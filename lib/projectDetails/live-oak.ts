@@ -13,6 +13,11 @@ export const liveOak: ProjectDetail = {
   title: "Live Oak Veterinary Specialists",
   subtitle: "UX Audit & Redesign for a specialty veterinary hospital",
   coverImage,
+  seo: {
+    title: "Live Oak Veterinary Case Study",
+    description:
+      "UX audit and website redesign for Live Oak Veterinary Specialists in Savannah: four user journeys, one navigation rebuilt around pet owners and referring vets.",
+  },
   nextProjectSlugs: ["prosolar", "modomio"],
   blocks: [
     {
@@ -36,7 +41,10 @@ export const liveOak: ProjectDetail = {
       heading: "The Problem",
       paragraph:
         "The client's four goals and the site's actual structure were working against each other. Emergency care and specialties were meant to stand out, but they carried the same visual weight as everything else on the page. Pet owners and referring vets, two completely different audiences, shared one navigation built for neither. And every way of getting in touch, booking, referring a case, asking a question, funneled into a single generic contact button.",
-      image: { src: problemImage, alt: "The Problem" },
+      image: {
+        src: problemImage,
+        alt: "Original Live Oak Veterinary homepage with a crowded navigation bar and two competing call-to-action banners",
+      },
     },
     {
       type: "keyDecisions",
@@ -48,7 +56,10 @@ export const liveOak: ProjectDetail = {
         "Rewrote medical language in plain terms, so a worried pet owner doesn't need a medical dictionary to understand their options",
         "Added the FAQ pet owners actually need before calling, which didn't exist before",
       ],
-      image: { src: solutionImage, alt: "The Solution" },
+      image: {
+        src: solutionImage,
+        alt: "Simplified Live Oak navigation with a Services dropdown listing Neurology, Cardiology, Diagnostic Imaging and Emergency services",
+      },
     },
     {
       type: "cards",
@@ -108,8 +119,14 @@ export const liveOak: ProjectDetail = {
       type: "video",
       videoUrl: "https://youtu.be/HtExi1wee9I",
       images: [
-        { src: processImage1, alt: "" },
-        { src: processImage2, alt: "" },
+        {
+          src: processImage1,
+          alt: "Live Oak Veterinary neurology page shown on a laptop, with a row of pet and surgery photos",
+        },
+        {
+          src: processImage2,
+          alt: "Live Oak Veterinary mobile homepage shown on a smartphone held in two hands",
+        },
       ],
     },
   ],

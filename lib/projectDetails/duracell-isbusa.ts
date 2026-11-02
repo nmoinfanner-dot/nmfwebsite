@@ -16,6 +16,11 @@ export const duracellIsbusa: ProjectDetail = {
   title: "Duracell + ISBUSA",
   subtitle: "Two brands, two different starting points, one job: make it perform.",
   coverImage,
+  seo: {
+    title: "Duracell + ISBUSA Case Study",
+    description:
+      "Paid social case study for Duracell and ISBUSA: $483 in ad spend became $32,873 in revenue, and a full-funnel strategy delivered a 28x return on ad spend.",
+  },
   nextProjectSlugs: ["motion", "live-oak"],
   blocks: [
     {

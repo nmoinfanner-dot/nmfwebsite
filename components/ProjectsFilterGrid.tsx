@@ -46,7 +46,7 @@ export function ProjectsFilterGrid({ projects }: { projects: Project[] }) {
                 <>
                   <Image
                     src={project.image}
-                    alt=""
+                    alt={`${project.title} project cover`}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover transition duration-300 group-hover:scale-105"

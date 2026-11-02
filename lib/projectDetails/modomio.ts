@@ -15,6 +15,11 @@ export const modomio: ProjectDetail = {
   title: "ModoMio",
   subtitle: "A brand built from zero for an itinerant dining experience in Milan.",
   coverImage,
+  seo: {
+    title: "ModoMio Case Study",
+    description:
+      "Brand identity, social media and website for ModoMio, an itinerant plant-based dining experience in Milan, built from zero by designer Natalia Moin Fanner.",
+  },
   nextProjectSlugs: ["cresta", "duracell-isbusa"],
   blocks: [
     {

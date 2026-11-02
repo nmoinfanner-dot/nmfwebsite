@@ -5,10 +5,14 @@ import { ContactCta } from "@/components/ContactCta";
 import { Reveal } from "@/components/Reveal";
 import { ProjectsFilterGrid } from "@/components/ProjectsFilterGrid";
 import { projects } from "@/lib/projects";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Selected Work",
-};
+  description:
+    "Brand identity, web design, social media and motion projects by Natalia Moin Fanner, from a trekking retreat in Italy to a solar brand in the Caribbean.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

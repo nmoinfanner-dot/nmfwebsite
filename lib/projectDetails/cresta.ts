@@ -22,6 +22,11 @@ export const cresta: ProjectDetail = {
   title: "Cresta",
   subtitle: "Building a brand from scratch: naming, visual system, and digital product",
   coverImage,
+  seo: {
+    title: "Cresta Case Study",
+    description:
+      "Case study: end-to-end brand identity, naming and website for Cresta, a trekking and food retreat in Lorsica, Italy, designed by Natalia Moin Fanner in Figma.",
+  },
   nextProjectSlugs: ["duracell-isbusa", "live-oak"],
   blocks: [
     {
