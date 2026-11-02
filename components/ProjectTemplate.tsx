@@ -4,13 +4,17 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { ProjectBlockRenderer } from "@/components/blocks/ProjectBlockRenderer";
-import { projects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import type { ProjectDetail } from "@/lib/projectBlocks";
 import { toYoutubeEmbedUrl } from "@/lib/youtube";
+import { format, localePath } from "@/lib/i18n/config";
+import { getDictionary, getLocale } from "@/lib/i18n/server";
 
-export function ProjectTemplate({ project }: { project: ProjectDetail }) {
+export async function ProjectTemplate({ project }: { project: ProjectDetail }) {
+  const lang = await getLocale();
+  const { common, projectTemplate } = await getDictionary();
   const nextProjects = project.nextProjectSlugs
-    .map((slug) => projects.find((p) => p.slug === slug))
+    .map((slug) => getProjects(lang).find((p) => p.slug === slug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
@@ -59,19 +63,19 @@ export function ProjectTemplate({ project }: { project: ProjectDetail }) {
 
       {nextProjects.length > 0 && (
         <Reveal className="mx-auto mt-20 max-w-5xl lg:mt-24">
-          <h2 className="font-heading text-2xl">Next Project</h2>
+          <h2 className="font-heading text-2xl">{projectTemplate.nextProject}</h2>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {nextProjects.map((next) => (
               <Link
                 key={next.slug}
-                href={`/projects/${next.slug}`}
+                href={localePath(lang, `/projects/${next.slug}`)}
                 className="group flex flex-col gap-3"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl transition-shadow duration-300 ease-out group-hover:shadow-xl">
                   {next.image && (
                     <Image
                       src={next.image}
-                      alt={`${next.title} project cover`}
+                      alt={format(common.projects.coverAlt, { title: next.title })}
                       fill
                       sizes="(min-width: 1024px) 32rem, 100vw"
                       className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"

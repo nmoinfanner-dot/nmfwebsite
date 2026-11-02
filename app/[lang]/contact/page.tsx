@@ -3,16 +3,17 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
+import { getDictionary, getLocale } from "@/lib/i18n/server";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Contact",
-  description:
-    "Get in touch with Natalia Moin Fanner for brand identity, web design or motion projects. Based in Milan, working remotely with clients in Europe and the US.",
-  path: "/contact",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getDictionary();
+  return buildMetadata({ lang: await getLocale(), ...seo.contact, path: "/contact" });
+}
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const { contact } = await getDictionary();
+
   return (
     <div className="bg-background px-6 py-10 sm:px-10 lg:px-[100px] lg:py-12">
       <SiteNav />
@@ -21,15 +22,12 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col justify-between gap-16">
             <div>
-              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl">Contact</h1>
-              <p className="mt-6 max-w-sm font-sans text-lg text-foreground/80">
-                If you have a project that needs both strategic thinking and hands-on design,
-                let&apos;s talk!
-              </p>
+              <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl">{contact.title}</h1>
+              <p className="mt-6 max-w-sm font-sans text-lg text-foreground/80">{contact.intro}</p>
             </div>
 
             <div>
-              <h2 className="font-sans font-bold text-foreground">Business Inquiries:</h2>
+              <h2 className="font-sans font-bold text-foreground">{contact.inquiries}</h2>
               <div className="mt-3 flex flex-col gap-1 font-sans text-foreground/70">
                 <a href="mailto:hello@nmoinfanner.com" className="hover:underline">
                   hello@nmoinfanner.com

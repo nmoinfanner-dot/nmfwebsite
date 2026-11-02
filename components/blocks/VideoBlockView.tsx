@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { VideoBlock } from "@/lib/projectBlocks";
 import { toYoutubeEmbedUrl } from "@/lib/youtube";
+import { getDictionary } from "@/lib/i18n/server";
 
 function VideoPlayer({ videoUrl, title, className = "" }: { videoUrl?: string; title: string; className?: string }) {
   return (
@@ -26,7 +27,10 @@ function VideoPlayer({ videoUrl, title, className = "" }: { videoUrl?: string; t
   );
 }
 
-export function VideoBlockView({ block }: { block: VideoBlock }) {
+export async function VideoBlockView({ block }: { block: VideoBlock }) {
+  const { projectTemplate } = await getDictionary();
+  const fallbackTitle = projectTemplate.projectVideo;
+
   return (
     <div>
       {block.heading && <h2 className="font-heading text-2xl">{block.heading}</h2>}
@@ -37,14 +41,14 @@ export function VideoBlockView({ block }: { block: VideoBlock }) {
       )}
       <VideoPlayer
         videoUrl={block.videoUrl}
-        title={block.heading ?? "Project video"}
+        title={block.heading ?? fallbackTitle}
         className={block.heading || block.paragraph ? "mt-6" : ""}
       />
       {block.additionalVideoUrls?.map((videoUrl, index) => (
         <VideoPlayer
           key={videoUrl}
           videoUrl={videoUrl}
-          title={`${block.heading ?? "Project video"} ${index + 2}`}
+          title={`${block.heading ?? fallbackTitle} ${index + 2}`}
           className="mt-6"
         />
       ))}

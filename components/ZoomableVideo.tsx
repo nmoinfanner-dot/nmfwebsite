@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "@/components/LocaleProvider";
+import { format } from "@/lib/i18n/config";
 
 export function ZoomableVideo({
   src,
@@ -12,6 +14,7 @@ export function ZoomableVideo({
   wrapperClassName?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const { zoom } = useLocale().common;
 
   useEffect(() => {
     if (!open) return;
@@ -37,7 +40,7 @@ export function ZoomableVideo({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label={`Expand ${alt}`}
+          aria-label={format(zoom.expand, { alt })}
           className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-foreground/60 text-button-background transition-colors duration-300 ease-out hover:bg-foreground/80"
         >
           <svg
@@ -65,7 +68,7 @@ export function ZoomableVideo({
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label="Close"
+            aria-label={zoom.close}
             className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-button-background text-foreground transition-opacity duration-300 ease-out hover:opacity-80"
           >
             <svg

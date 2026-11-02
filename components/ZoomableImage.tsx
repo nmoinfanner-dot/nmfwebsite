@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
+import { useLocale } from "@/components/LocaleProvider";
+import { format } from "@/lib/i18n/config";
 
 export function ZoomableImage({
   src,
@@ -21,6 +23,7 @@ export function ZoomableImage({
   fit?: "cover" | "contain";
 }) {
   const [open, setOpen] = useState(false);
+  const { zoom } = useLocale().common;
 
   useEffect(() => {
     if (!open) return;
@@ -36,7 +39,7 @@ export function ZoomableImage({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label={`Expand ${alt}`}
+        aria-label={format(zoom.expand, { alt })}
         className={`block w-full cursor-zoom-in overflow-hidden ${fit === "cover" ? "relative" : ""} ${wrapperClassName}`}
       >
         {fit === "cover" ? (
@@ -65,7 +68,7 @@ export function ZoomableImage({
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label="Close"
+            aria-label={zoom.close}
             className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-button-background text-foreground transition-opacity duration-300 ease-out hover:opacity-80"
           >
             <svg

@@ -5,12 +5,14 @@ import { SiteNav } from "@/components/SiteNav";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ProjectTemplate } from "@/components/ProjectTemplate";
 import { linkClasses } from "@/components/buttons";
-import { projects } from "@/lib/projects";
-import { projectDetails } from "@/lib/projectDetails";
+import { localePath } from "@/lib/i18n/config";
+import { getDictionary, getLocale } from "@/lib/i18n/server";
+import { getProjects, projectSlugs } from "@/lib/projects";
+import { getProjectDetail } from "@/lib/projectDetails";
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return projectSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -19,9 +21,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const detail = projectDetails[slug];
+  const lang = await getLocale();
+  const { seo } = await getDictionary();
+  const detail = getProjectDetail(slug, lang);
   if (detail) {
     return buildMetadata({
+      lang,
       title: detail.seo.title,
       description: detail.seo.description,
       path: `/projects/${slug}`,
@@ -29,14 +34,15 @@ export async function generateMetadata({
         url: detail.coverImage.src,
         width: detail.coverImage.width,
         height: detail.coverImage.height,
-        alt: `${detail.title} project cover`,
+        alt: detail.title,
       },
     });
   }
-  const project = projects.find((p) => p.slug === slug);
+  const project = getProjects(lang).find((p) => p.slug === slug);
   return buildMetadata({
+    lang,
     title: project?.title ?? "Project",
-    description: project?.oneLiner ?? "A project by Natalia Moin Fanner.",
+    description: project?.oneLiner ?? seo.projectFallbackDescription,
     path: `/projects/${slug}`,
   });
 }
@@ -47,13 +53,15 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const lang = await getLocale();
+  const { common, projectTemplate } = await getDictionary();
+  const project = getProjects(lang).find((p) => p.slug === slug);
 
   if (!project) {
     notFound();
   }
 
-  const detail = projectDetails[slug];
+  const detail = getProjectDetail(slug, lang);
   if (detail) {
     return <ProjectTemplate project={detail} />;
   }
@@ -70,15 +78,15 @@ export default async function ProjectPage({
               key={category}
               className="rounded-full bg-button-background px-3 py-1 font-sans text-xs font-bold text-foreground"
             >
-              {category}
+              {common.projects.categories[category] ?? category}
             </span>
           ))}
         </div>
         <h1 className="font-heading text-4xl sm:text-5xl">{project.title}</h1>
         <p className="font-sans text-foreground/70">{project.oneLiner}</p>
-        <p className="mt-4 font-sans text-sm text-foreground/50">Full case study coming soon.</p>
-        <Link href="/projects" className={linkClasses}>
-          Back to projects
+        <p className="mt-4 font-sans text-sm text-foreground/50">{projectTemplate.comingSoon}</p>
+        <Link href={localePath(lang, "/projects")} className={linkClasses}>
+          {projectTemplate.back}
         </Link>
       </div>
 

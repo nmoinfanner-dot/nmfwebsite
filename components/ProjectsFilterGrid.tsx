@@ -4,15 +4,22 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { useLocale } from "@/components/LocaleProvider";
+import { format } from "@/lib/i18n/config";
 import type { Project } from "@/lib/projects";
 
-const filters = ["All", "Branding", "Web Design", "Social Media", "Graphic Design"];
+// "All" shows everything; the rest match the English category keys on each project.
+const ALL = "All";
+const filters = [ALL, "Branding", "Web Design", "Social Media", "Graphic Design"];
 
 export function ProjectsFilterGrid({ projects }: { projects: Project[] }) {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState(ALL);
+  const { common, href } = useLocale();
+  const label = (category: string) =>
+    category === ALL ? common.projects.all : (common.projects.categories[category] ?? category);
 
   const visibleProjects =
-    activeFilter === "All"
+    activeFilter === ALL
       ? projects
       : projects.filter((project) => project.categories.includes(activeFilter));
 
@@ -30,7 +37,7 @@ export function ProjectsFilterGrid({ projects }: { projects: Project[] }) {
                 : "rounded-full bg-button-background px-5 py-2 font-sans text-sm font-bold text-foreground transition-colors duration-300 ease-out hover:bg-foreground/10"
             }
           >
-            {filter}
+            {label(filter)}
           </button>
         ))}
       </div>
@@ -39,14 +46,14 @@ export function ProjectsFilterGrid({ projects }: { projects: Project[] }) {
         {visibleProjects.map((project, index) => (
           <Reveal key={project.slug} delay={(index % 2) * 0.08} className="h-full">
             <Link
-              href={`/projects/${project.slug}`}
+              href={href(`/projects/${project.slug}`)}
               className="group relative flex h-full min-h-[340px] flex-col justify-end overflow-hidden rounded-3xl transition-shadow duration-300 ease-out hover:shadow-xl"
             >
               {project.image ? (
                 <>
                   <Image
                     src={project.image}
-                    alt={`${project.title} project cover`}
+                    alt={format(common.projects.coverAlt, { title: project.title })}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover transition duration-300 group-hover:scale-105"
@@ -63,7 +70,7 @@ export function ProjectsFilterGrid({ projects }: { projects: Project[] }) {
                       key={category}
                       className="rounded-full bg-button-background px-3 py-1 font-sans text-xs font-bold text-foreground"
                     >
-                      {category}
+                      {label(category)}
                     </span>
                   ))}
                 </div>
