@@ -94,8 +94,10 @@ export default function PricingPage() {
           {packages.map((pkg) => (
             <article
               key={pkg.name}
-              className={`relative flex flex-col rounded-[40px] border-[1.5px] bg-button-background p-8 pb-14 lg:p-10 lg:pb-14 ${
-                pkg.featured ? "border-accent lg:-translate-y-10" : "border-foreground"
+              className={`relative flex flex-col rounded-[40px] border-[1.5px] bg-button-background p-8 pb-14 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-lg lg:p-10 lg:pb-14 ${
+                pkg.featured
+                  ? "border-accent lg:-translate-y-10 lg:hover:-translate-y-12"
+                  : "border-foreground"
               }`}
             >
               {pkg.featured && (
