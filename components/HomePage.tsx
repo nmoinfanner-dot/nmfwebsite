@@ -78,7 +78,6 @@ export default function Home() {
           className="order-4 flex flex-col gap-6 lg:order-1 lg:w-1/6 lg:gap-4"
         >
           <div className="relative flex flex-col gap-3 rounded-3xl bg-button-background p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg lg:min-h-[220px]">
-            <CardArrowLink href="/pricing" label="Go to pricing" />
             <h2 className="font-heading text-lg">Packages &amp; pricing</h2>
             <p className="font-sans text-sm text-foreground/70">
               Three clear starting points, from launch to full brand presence.
