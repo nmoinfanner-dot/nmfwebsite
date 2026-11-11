@@ -26,7 +26,6 @@ const en = {
     base: "Base",
     baseValue: "Milan, Italy",
   },
-  prototype: "Prototype",
   challengeHeading: "The Design Challenge",
   challengeText:
     "The brand needed to attract two very different audiences simultaneously: guests who want to attend, and hosts who want to offer their space. Each has a different emotional need. The visual identity had to speak to both without losing coherence.",
@@ -72,7 +71,6 @@ const es: Copy = {
     base: "Base",
     baseValue: "Milán, Italia",
   },
-  prototype: "Prototipo",
   challengeHeading: "El desafío de diseño",
   challengeText:
     "La marca necesitaba atraer a dos públicos muy distintos a la vez: los comensales que quieren asistir y los anfitriones que quieren ofrecer su espacio. Cada uno tiene una necesidad emocional diferente. La identidad visual tenía que hablarles a ambos sin perder coherencia.",
@@ -116,7 +114,6 @@ const it: Copy = {
     base: "Sede",
     baseValue: "Milano, Italia",
   },
-  prototype: "Prototipo",
   challengeHeading: "La sfida di design",
   challengeText:
     "Il brand doveva attrarre contemporaneamente due pubblici molto diversi: gli ospiti che vogliono partecipare e i padroni di casa che vogliono mettere a disposizione il proprio spazio. Ognuno ha un bisogno emotivo diverso. L'identità visiva doveva parlare a entrambi senza perdere coerenza.",
@@ -168,7 +165,6 @@ export function modomio(lang: Locale): ProjectDetail {
           { label: c.fields.client, value: "ModoMio" },
           { label: c.fields.base, value: c.fields.baseValue },
         ],
-        cta: { label: c.prototype, href: "https://modomio.framer.website/" },
       },
       {
         type: "text",

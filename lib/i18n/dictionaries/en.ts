@@ -56,7 +56,7 @@ export const en = {
       close: "Close",
       language: "Language",
       links: {
-        about: "About Us",
+        about: "About Me",
         projects: "Project",
         services: "Services",
         pricing: "Pricing",

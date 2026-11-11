@@ -11,6 +11,7 @@ export function ZoomableImage({
   wrapperClassName = "",
   sizes = "100vw",
   fit = "cover",
+  page = false,
 }: {
   src: StaticImageData;
   alt: string;
@@ -21,6 +22,9 @@ export function ZoomableImage({
   // nothing gets cropped (wrapperClassName shouldn't include an aspect
   // class in that case).
   fit?: "cover" | "contain";
+  // A very tall image (a full web page screenshot). The thumbnail shows its
+  // top, and the lightbox scrolls so the whole page can be read.
+  page?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const { zoom } = useLocale().common;
@@ -48,7 +52,7 @@ export function ZoomableImage({
             alt={alt}
             fill
             sizes={sizes}
-            className="object-cover transition duration-300 hover:scale-105"
+            className={`object-cover transition duration-300 hover:scale-105 ${page ? "object-top" : ""}`}
           />
         ) : (
           <Image
@@ -62,14 +66,16 @@ export function ZoomableImage({
 
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6"
+          className={`fixed inset-0 z-50 bg-black/85 p-6 ${
+            page ? "overflow-y-auto px-3" : "flex items-center justify-center"
+          }`}
           onClick={() => setOpen(false)}
         >
           <button
             type="button"
             onClick={() => setOpen(false)}
             aria-label={zoom.close}
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-button-background text-foreground transition-opacity duration-300 ease-out hover:opacity-80"
+            className="fixed right-6 top-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-button-background text-foreground transition-opacity duration-300 ease-out hover:opacity-80"
           >
             <svg
               viewBox="0 0 24 24"
@@ -83,12 +89,28 @@ export function ZoomableImage({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
-          <div
-            className="relative h-[85vh] w-full max-w-3xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <Image src={src} alt={alt} fill sizes="90vw" className="object-contain" />
-          </div>
+          {page ? (
+            <div
+              className="mx-auto w-full pt-12"
+              style={{ maxWidth: Math.min(src.width, 768) }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                // The original file, so small text on the page stays readable.
+                unoptimized
+                className="h-auto w-full rounded-lg"
+              />
+            </div>
+          ) : (
+            <div
+              className="relative h-[85vh] w-full max-w-3xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <Image src={src} alt={alt} fill sizes="90vw" className="object-contain" />
+            </div>
+          )}
         </div>
       )}
     </>

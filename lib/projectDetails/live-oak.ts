@@ -26,7 +26,6 @@ const en = {
     durationValue: "6 Months",
     year: "Year",
   },
-  prototype: "Prototype",
   problemHeading: "The Problem",
   problemText:
     "The client's four goals and the site's actual structure were working against each other. Emergency care and specialties were meant to stand out, but they carried the same visual weight as everything else on the page. Pet owners and referring vets, two completely different audiences, shared one navigation built for neither. And every way of getting in touch, booking, referring a case, asking a question, funneled into a single generic contact button.",
@@ -103,7 +102,6 @@ const es: Copy = {
     durationValue: "6 meses",
     year: "Año",
   },
-  prototype: "Prototipo",
   problemHeading: "El problema",
   problemText:
     "Los cuatro objetivos del cliente y la estructura real del sitio iban en direcciones opuestas. La atención de emergencias y las especialidades debían destacar, pero tenían el mismo peso visual que todo lo demás en la página. Dueños de mascotas y veterinarios derivantes, dos públicos completamente distintos, compartían una navegación pensada para ninguno de los dos. Y todas las formas de contacto, reservar, derivar un caso, hacer una consulta, terminaban en un único botón de contacto genérico.",
@@ -179,7 +177,6 @@ const it: Copy = {
     durationValue: "6 mesi",
     year: "Anno",
   },
-  prototype: "Prototipo",
   problemHeading: "Il problema",
   problemText:
     "I quattro obiettivi del cliente e la struttura reale del sito andavano in direzioni opposte. Pronto soccorso e specialità dovevano distinguersi, ma avevano lo stesso peso visivo di tutto il resto della pagina. Proprietari di animali e veterinari invianti, due pubblici completamente diversi, condividevano una navigazione pensata per nessuno dei due. E ogni modo di mettersi in contatto, prenotare, inviare un caso, fare una domanda, finiva in un unico pulsante di contatto generico.",
@@ -261,10 +258,6 @@ export function liveOak(lang: Locale): ProjectDetail {
           { label: c.fields.duration, value: c.fields.durationValue },
           { label: c.fields.year, value: "2025" },
         ],
-        cta: {
-          label: c.prototype,
-          href: "https://liveoakveterinary.framer.website/?editSite",
-        },
       },
       {
         type: "text",

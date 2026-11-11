@@ -63,12 +63,14 @@ export type GalleryTile = GalleryImageTile | GalleryVideoTile;
 // heading + images (or videos) in a 1, 2, or 3 column grid. Each image opens
 // in a lightbox on click. aspect controls the tile shape: "portrait"
 // (default, e.g. wireframes) or "landscape" (e.g. a single full-width
-// horizontal photo with columns: 1).
+// horizontal photo with columns: 1). "page" is for tall full-page website
+// screenshots: a square tile on phones (3:4 from the sm breakpoint up) that
+// shows the top of the page, and opens in a scrollable lightbox to read it all.
 export type GalleryBlock = {
   type: "gallery";
   heading?: string;
   columns: 1 | 2 | 3;
-  aspect?: "portrait" | "landscape";
+  aspect?: "portrait" | "landscape" | "page";
   images: GalleryTile[];
 };
 

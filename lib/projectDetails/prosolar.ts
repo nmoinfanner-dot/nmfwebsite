@@ -28,7 +28,6 @@ const en = {
     industryValue: "Solar Energy System",
     client: "Client",
   },
-  prototype: "Prototype",
   challengeHeading: "The Challenge",
   challengeText:
     "Despite 5 years of growth, the brand had no unified visual system: inconsistent color usage, a logo that didn't scale across applications, no defined typography, and no guidelines to ensure coherence across locations. Each franchise was communicating differently, which undermined trust and recognition.",
@@ -74,7 +73,6 @@ const es: Copy = {
     industryValue: "Sistemas de energía solar",
     client: "Cliente",
   },
-  prototype: "Prototipo",
   challengeHeading: "El desafío",
   challengeText:
     "A pesar de 5 años de crecimiento, la marca no tenía un sistema visual unificado: uso inconsistente del color, un logo que no escalaba entre aplicaciones, tipografía sin definir y ninguna guía que asegurara la coherencia entre ubicaciones. Cada franquicia se comunicaba de forma distinta, lo que debilitaba la confianza y el reconocimiento.",
@@ -118,7 +116,6 @@ const it: Copy = {
     industryValue: "Sistemi di energia solare",
     client: "Cliente",
   },
-  prototype: "Prototipo",
   challengeHeading: "La sfida",
   challengeText:
     "Nonostante 5 anni di crescita, il brand non aveva un sistema visivo unificato: uso incoerente del colore, un logo che non si adattava alle diverse applicazioni, nessuna tipografia definita e nessuna linea guida che garantisse coerenza tra le sedi. Ogni franchising comunicava in modo diverso, e questo minava fiducia e riconoscibilità.",
@@ -168,7 +165,6 @@ export function prosolar(lang: Locale): ProjectDetail {
           { label: c.fields.industry, value: c.fields.industryValue },
           { label: c.fields.client, value: "Prosolar Systems" },
         ],
-        cta: { label: c.prototype, href: "https://prosolarpr.framer.website/?editSite" },
       },
       {
         type: "text",

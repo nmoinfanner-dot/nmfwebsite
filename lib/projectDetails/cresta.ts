@@ -17,6 +17,8 @@ import propuestaImage from "@/assets/images/project/cresta/propuesta.png";
 import menuGiorno1Image from "@/assets/images/project/cresta/menu-giorno1.png";
 import menuGiorno2Image from "@/assets/images/project/cresta/menu-giorno2.png";
 import menuGiorno3Image from "@/assets/images/project/cresta/menu-giorno3.png";
+import webExperienciaImage from "@/assets/images/project/cresta/web-experiencia.jpg";
+import webHomeImage from "@/assets/images/project/cresta/web-home.jpg";
 
 const en = {
   subtitle: "Building a brand from scratch: naming, visual system, and digital product",
@@ -33,7 +35,6 @@ const en = {
     timeline: "Timeline",
     timelineValue: "April - July 2026",
   },
-  prototype: "Prototype",
   researchHeading: "Research",
   researchText:
     "The moodboard went through several rounds of correction: early references leaned too editorial (glossy hands, plated fine-dining food), far from the 'premium but homemade' feeling the brand needed. The final board settled into three threads that coexist: the physical (mountains, trails, worn boots), the social (long tables, cards, laughter), and the sensory (water, texture, hands), all in the same warm, unposed register.",
@@ -66,6 +67,8 @@ const en = {
   menu2Alt: "Cresta menu, Giorno 2: Montagna",
   menu3Alt: "Cresta menu, Giorno 3: Arrivederci",
   websiteHeading: "Website",
+  webExperienceAlt: "Cresta website, Experience page (full page)",
+  webHomeAlt: "Cresta website, home page (full page)",
 };
 
 type Copy = typeof en;
@@ -85,7 +88,6 @@ const es: Copy = {
     timeline: "Plazo",
     timelineValue: "Abril - julio de 2026",
   },
-  prototype: "Prototipo",
   researchHeading: "Investigación",
   researchText:
     "El moodboard pasó por varias rondas de corrección: las primeras referencias eran demasiado editoriales (manos brillantes, platos de alta cocina), lejos de la sensación “premium pero casera” que necesitaba la marca. El tablero final se asentó en tres hilos que conviven: lo físico (montañas, senderos, botas gastadas), lo social (mesas largas, tarjetas, risas) y lo sensorial (agua, texturas, manos), todo en el mismo registro cálido y sin poses.",
@@ -118,6 +120,8 @@ const es: Copy = {
   menu2Alt: "Menú de Cresta, Giorno 2: Montagna",
   menu3Alt: "Menú de Cresta, Giorno 3: Arrivederci",
   websiteHeading: "Sitio web",
+  webExperienceAlt: "Sitio web de Cresta, página Experiencia (página completa)",
+  webHomeAlt: "Sitio web de Cresta, página de inicio (página completa)",
 };
 
 const it: Copy = {
@@ -135,7 +139,6 @@ const it: Copy = {
     timeline: "Tempi",
     timelineValue: "Aprile - luglio 2026",
   },
-  prototype: "Prototipo",
   researchHeading: "Ricerca",
   researchText:
     "Il moodboard è passato attraverso diversi giri di correzione: i primi riferimenti erano troppo editoriali (mani patinate, piatti da alta cucina), lontani dalla sensazione “premium ma casalinga” di cui il brand aveva bisogno. La versione finale si è assestata su tre filoni che convivono: il fisico (montagne, sentieri, scarponi consumati), il sociale (tavolate, biglietti, risate) e il sensoriale (acqua, texture, mani), tutti nello stesso registro caldo e spontaneo.",
@@ -168,6 +171,8 @@ const it: Copy = {
   menu2Alt: "Menu di Cresta, Giorno 2: Montagna",
   menu3Alt: "Menu di Cresta, Giorno 3: Arrivederci",
   websiteHeading: "Sito web",
+  webExperienceAlt: "Sito web di Cresta, pagina Esperienza (pagina intera)",
+  webHomeAlt: "Sito web di Cresta, home page (pagina intera)",
 };
 
 const copy: Record<Locale, Copy> = { en, es, it };
@@ -193,8 +198,6 @@ export function cresta(lang: Locale): ProjectDetail {
           { label: c.fields.tools, value: "Figma, Figma Sites, Figma Motion" },
           { label: c.fields.timeline, value: c.fields.timelineValue },
         ],
-        // TODO: no real prototype link yet, placeholder until Natalia sends one.
-        cta: { label: c.prototype, href: "#" },
       },
       {
         type: "text",
@@ -261,6 +264,15 @@ export function cresta(lang: Locale): ProjectDetail {
         type: "video",
         heading: c.websiteHeading,
         videoUrl: "https://youtu.be/w5vGnQM9DuA",
+      },
+      {
+        type: "gallery",
+        columns: 2,
+        aspect: "page",
+        images: [
+          { src: webExperienciaImage, alt: c.webExperienceAlt },
+          { src: webHomeImage, alt: c.webHomeAlt },
+        ],
       },
     ],
   };

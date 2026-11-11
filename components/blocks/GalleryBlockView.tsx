@@ -12,6 +12,7 @@ const columnsClass: Record<GalleryBlock["columns"], string> = {
 const aspectClass: Record<NonNullable<GalleryBlock["aspect"]>, string> = {
   portrait: "aspect-[3/4]",
   landscape: "aspect-[16/9]",
+  page: "aspect-square sm:aspect-[3/4]",
 };
 
 const sizesByColumns: Record<GalleryBlock["columns"], string> = {
@@ -73,6 +74,7 @@ export function GalleryBlockView({ block }: { block: GalleryBlock }) {
                   wrapperClassName={isContain ? "rounded-2xl" : `${boxAspect} rounded-2xl`}
                   sizes={sizesByColumns[block.columns]}
                   fit={image.fit}
+                  page={block.aspect === "page"}
                 />
               ) : (
                 <div className={`${boxAspect} rounded-2xl bg-accent/20`} />
