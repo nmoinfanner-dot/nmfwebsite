@@ -80,6 +80,9 @@ export const en = {
       phone: "Phone Number",
       message: "Message",
       send: "Send Message",
+      sending: "Sending...",
+      success: "Thank you, your message was sent. I'll get back to you soon.",
+      error: "Something went wrong and your message was not sent. Please try again, or write to hello@nmoinfanner.com.",
     },
     zoom: {
       expand: "Expand {alt}",

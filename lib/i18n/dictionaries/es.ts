@@ -80,6 +80,9 @@ export const es: Dictionary = {
       phone: "Teléfono",
       message: "Mensaje",
       send: "Enviar mensaje",
+      sending: "Enviando...",
+      success: "Gracias, tu mensaje fue enviado. Te responderé pronto.",
+      error: "Algo salió mal y tu mensaje no se envió. Inténtalo de nuevo o escribe a hello@nmoinfanner.com.",
     },
     zoom: {
       expand: "Ampliar {alt}",
